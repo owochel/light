@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "12v controller"
-date: 2023-02-08 16:32:58 -0500
+date: 2023-02-15 16:32:58 -0500
 categories: jekyll update
 ---
 
