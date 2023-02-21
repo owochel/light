@@ -1,4 +1,4 @@
-##Addressable LED Candle
+## Addressable LED Candle
 
 This project asks us to uses an arduino and [NeoPixel jewel](https://www.adafruit.com/product/2226) to create a candle. 
 I chose to use a Nano 33 BLE and a photocell to accomplish a torch that "borrows" light.
