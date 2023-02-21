@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Weekly Observation
+permalink: /Weekly Observation/
 ---
 
 This is Shuang's documentation of the projects/assignments made for [Tom Igoe's class in the same name](https://itp.nyu.edu/classes/light/)
