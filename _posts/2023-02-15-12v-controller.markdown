@@ -14,7 +14,7 @@ The code can be found [here]({{ site.codeurl}}\_12v/12v/12v.ino ).
 
 For the bulb input, I used a audio jack port I found from the junk shelf. The port has two plugs that is easy to attach/remove. To reduce the chances of damage and shorts happening behind the soldering points, I also added a backing and four feet for the board.
 
-![This the picture of the board.]({{ site.asseturl }}/\_12v/side.jpg)
+![This the picture of the board.]({{ site.asseturl }}/\_12v/side.jpeg)
 
 See video for demo
 
