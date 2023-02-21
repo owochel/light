@@ -7,16 +7,17 @@
 <meta name="generator" content="Jekyll v3.9.3" />
 <meta property="og:title" content="Interruptible LED fade" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This is Shuang’s documentation for Tom Igoe’s class in the same name" />
-<meta property="og:description" content="This is Shuang’s documentation for Tom Igoe’s class in the same name" />
-<link rel="canonical" href="http://localhost:4000/light/PWM/" />
-<meta property="og:url" content="http://localhost:4000/light/PWM/" />
+<meta name="description" content="Create a fading LED attached to a micro-controller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source." />
+<meta property="og:description" content="Create a fading LED attached to a micro-controller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source." />
+<link rel="canonical" href="http://localhost:4000/light/jekyll/update/2023/02/01/interruptible-LED-fade.html" />
+<meta property="og:url" content="http://localhost:4000/light/jekyll/update/2023/02/01/interruptible-LED-fade.html" />
 <meta property="og:site_name" content="Light and Interactivity Documentation" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-02-01T16:32:58-05:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Interruptible LED fade" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This is Shuang’s documentation for Tom Igoe’s class in the same name","headline":"Interruptible LED fade","url":"http://localhost:4000/light/PWM/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-02-01T16:32:58-05:00","datePublished":"2023-02-01T16:32:58-05:00","description":"Create a fading LED attached to a micro-controller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source.","headline":"Interruptible LED fade","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/light/jekyll/update/2023/02/01/interruptible-LED-fade.html"},"url":"http://localhost:4000/light/jekyll/update/2023/02/01/interruptible-LED-fade.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/light/assets/main.css">
   <link rel="shortcut icon" type="image/gif" href="favicon.gif" /><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/light/feed.xml" title="Light and Interactivity Documentation" /></head>
@@ -32,21 +33,22 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/light/about/">About</a><a class="page-link" href="/light/PWM/">Interruptible LED fade</a><a class="page-link" href="/light/candle/">Addressable LED Candle</a></div>
+        <div class="trigger"><a class="page-link" href="/light/about/">About</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">Interruptible LED fade</h1>
+    <h1 class="post-title p-name" itemprop="name headline">Interruptible LED fade</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-02-01T16:32:58-05:00" itemprop="datePublished">Feb 1, 2023
+      </time></p>
   </header>
 
-  <div class="post-content">
-    <h2 id="interruptible-led-fade">Interruptible LED fade</h2>
-
-<p>Create a fading LED attached to a microcontroller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your microcontroller, or use a DC source.</p>
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Create a fading LED attached to a micro-controller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source.</p>
 
 <iframe width="360" height="640" src="https://user-images.githubusercontent.com/51350490/220411780-440c2664-e26b-4f01-be05-fa12f8d41e1b.mp4">
 </iframe>
@@ -54,10 +56,11 @@
 <p>In this assignment, I used both the simple linear curve and the exponential curve for the fade. The LED on the top of the video is the exponential curve fade and the bottom is the simple linear curve fade. As the video shows, the two types of fades are different.
 The button on the top (brown) gradually turns the lights on, and the bottom turns the lights off. When both buttons are pressed at the same time, the bulbs show a loop where the two bulbs flash with the fade on to off and back to on.</p>
 
-<p><img src="/light/PWM/circuit.jpg" alt="This the picture of the circuit." /></p>
+<p><img src="/_PWM/circuit.jpg" alt="This the picture of the circuit." />
+<img src="/\_PWM/circuit.jpg" alt="This the picture of the circuit." />
+<a href="">The code for the circuit</a></p>
 
-  </div>
-
+  </div><a class="u-url" href="/light/jekyll/update/2023/02/01/interruptible-LED-fade.html" hidden></a>
 </article>
 
       </div>
