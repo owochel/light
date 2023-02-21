@@ -1,29 +1,17 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2023-02-05 16:32:58 -0500
+title: "Interruptive LED fade"
+date: 2023-02-05 16:32:58 -0500
 categories: jekyll update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+Create a fading LED attached to a micro-controller. Your LED should be interruptive by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source.
 
-`YEAR-MONTH-DAY-title.MARKUP`
+<iframe width="360" height="640"
+  src="https://user-images.githubusercontent.com/51350490/220411780-440c2664-e26b-4f01-be05-fa12f8d41e1b.mp4">
+</iframe>
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+In this assignment, I used both the simple linear curve and the exponential curve for the fade. The LED on the top of the video is the exponential curve fade and the bottom is the simple linear curve fade. As the video shows, the two types of fades are different.
+The button on the top (brown) gradually turns the lights on, and the bottom turns the lights off. When both buttons are pressed at the same time, the bulbs show a loop where the two bulbs flash with the fade on to off and back to on.
 
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+![This the picture of the circuit.](/PWM/circuit.jpg)
