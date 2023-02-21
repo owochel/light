@@ -21,7 +21,8 @@
 title: Light and Interactivity Documentation
 email: zoecsh@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This is Shuang's documentation for <a href="https://itp.nyu.edu/classes/light/">Tom Igoe's class in the same name</a>
+  This is Shuang's documentation for Tom Igoe's class -- Light and Interactivity.
+
 baseurl: "/light" # the subpath of your site, e.g. /blog
 codeurl: "https://github.com/owochel/light/tree/main"
 asseturl: "https://raw.githubusercontent.com/owochel/light/main"
