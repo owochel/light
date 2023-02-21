@@ -3,7 +3,7 @@
 Create a fading LED attached to a microcontroller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your microcontroller, or use a DC source.
 
 ![This the video of the assignment.](video.mp4)
-<video src="https://user-images.githubusercontent.com/169707/126715420-991ad821-9ac8-4b66-b79e-e0966e0f3a89.mp4" controls="controls" style="max-width: 730px;">
+<video src=video.mp4>
 </video>
 
 
