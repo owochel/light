@@ -1,7 +1,8 @@
-title: Light and Interactivity Documentation
+title: Light & Interactivity
+author: shuang
 email: zoecsh@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This is Shuang's documentation for Tom Igoe's class -- Light and Interactivity.
+  This is Shuang's documentation for Tom Igoe's class in the same name.
 
 baseurl: "/light" # the subpath of your site, e.g. /blog
 observations: "/light/weekly"
