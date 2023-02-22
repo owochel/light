@@ -1,4 +1,5 @@
 ---
+label: assignments
 layout: post
 title: "12v redo and paper shades"
 date: 2023-02-21 16:38:58 -0500

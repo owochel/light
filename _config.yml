@@ -4,6 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   This is Shuang's documentation for Tom Igoe's class -- Light and Interactivity.
 
 baseurl: "/light" # the subpath of your site, e.g. /blog
+observations: "/light/weekly"
 codeurl: "https://github.com/owochel/light/tree/main"
 asseturl: "https://raw.githubusercontent.com/owochel/light/main"
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
@@ -13,6 +14,10 @@ github_username: owochel
 theme: minima
 plugins:
   - jekyll-feed
+
+collections:
+  weekly:
+    output: true
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

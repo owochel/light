@@ -1,4 +1,5 @@
 ---
+label: assignments
 layout: post
 title: "12v controller"
 date: 2023-02-15 16:32:58 -0500

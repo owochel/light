@@ -1,13 +1,13 @@
 ---
-layout: default
+layout: page
+title: weekly observation
+permalink: /weekly-observation/
 ---
 
-<div class="home">
-  {%- if page.title -%}
-  <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%} {{ content }} {%- if site.posts.size > 0 -%}
+{%- if site.posts.size > 0 -%}
+
   <ul class="post-list">
-    {%- for post in site.posts -%}
+    {%- for post in site.weekly reversed -%}
     <li>
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y"
       -%}
@@ -22,5 +22,4 @@ layout: default
     {%- endfor -%}
   </ul>
 
-  {%- endif -%}
-</div>
+{%- endif -%}

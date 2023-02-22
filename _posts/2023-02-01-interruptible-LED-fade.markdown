@@ -1,4 +1,5 @@
 ---
+label: assignments
 layout: post
 title: "interruptible LED fade"
 date: 2023-02-01 16:32:58 -0500
