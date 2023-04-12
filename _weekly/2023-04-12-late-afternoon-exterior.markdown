@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Late afternoon, exterior. Pre-sunset or sunset
+title: late afternoon, exterior. pre-sunset or sunset
 date: 2023-02-22  12:56:58 -0500
 ---
 
