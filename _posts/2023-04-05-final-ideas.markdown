@@ -12,4 +12,4 @@ We are currently set on the third idea. We want the grandpa clock idea reserved 
 
 For the form, we want a two-part solution. We want the top to be a environment light and bottom to be a reading light.
 
-![This is a sketch Leia drew.]({{ site.asseturl }}/\_final/ideation.png)
+![This is a sketch Leia drew.]({{ site.asseturl }}/\_final/sketch.png)
