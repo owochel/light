@@ -56,6 +56,12 @@ Another calculation that I didn't plan but should have is the current consumptio
 
 Here's a video of this soldered circuit trail (also with 2 bulbs). This is the time lapse to the point the light turns off.
 
+<iframe width="900" height="500"
+  src="
+https://user-images.githubusercontent.com/51350490/236008609-9b2b09e4-b816-4a60-827e-11f9876f2aa1.mp4
+">
+</iframe>
+
 Fabrication Stuff:
 Leia did some test for the plywood bending!
 
@@ -64,8 +70,21 @@ Leia did some test for the plywood bending!
 https://user-images.githubusercontent.com/51350490/235799788-68f65712-7cb4-412c-825e-9a75976743b5.mp4">
 </iframe>
 
+This bend is the final design we decided to go with. Leia also sand and oiled the wooden frame.
+
 After the wood parts are done. We designed the acrylic parts based on the wood frame since the bends are not perfectly 90 degree, and we want the acrylic to fully cover the plywood edge. We traced the frame on physical papers and traced the physical sketch in Illustrator for laser cutter.
 
 Here's the the general design. Later we added ear holes to make it easier to put the bulb in.
 
 ![The screenshot of the Illustrator file.]({{ site.asseturl }}/\_final/acrylic.png)
+
+On the traced file, it is pretty visible that the bend is not a perfect bend once we traced it.
+
+In the original plan, we wanted a shade/diffusor edge on the top. In the process, we noticed that the diffusor isn't really diffusing as much as the wall is. The bulb is shining directly on the wall to shape the scallop. However, we still like the acrylic as a visual indicator of a lamp. Therefore, we went for the acrylic bending route.
+
+![The screenshot of the Illustrator file.]({{ site.asseturl }}/\_final/bend.png)
+
+From there, we basically cut the acrylic piece. Noticed that the wood bend shrunk more over night, so that our acrylic pieces doesn't really fit exactly. Assembled everything, including the circuit. Attached the protoboard on the lamp body. Sand down the edges of the acrylic.
+
+Here's a final photo of the lamp against the wall:
+![The screenshot of the Illustrator file.]({{ site.asseturl }}/\_final/final.png)

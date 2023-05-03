@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/light/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/light/" rel="alternate" type="text/html" /><updated>2023-05-03T14:17:46-04:00</updated><id>http://localhost:4000/light/feed.xml</id><title type="html">Light &amp;amp; Interactivity</title><subtitle>This is Shuang&apos;s documentation for Tom Igoe&apos;s class in the same name.</subtitle><author><name>shuang</name></author><entry><title type="html">final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html" rel="alternate" type="text/html" title="final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/Schematics.png&quot; alt=&quot;This is the schematics.&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/light/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/light/" rel="alternate" type="text/html" /><updated>2023-05-03T14:31:21-04:00</updated><id>http://localhost:4000/light/feed.xml</id><title type="html">Light &amp;amp; Interactivity</title><subtitle>This is Shuang&apos;s documentation for Tom Igoe&apos;s class in the same name.</subtitle><author><name>shuang</name></author><entry><title type="html">final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html" rel="alternate" type="text/html" title="final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/Schematics.png&quot; alt=&quot;This is the schematics.&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I designed the PCB and cut. Short conclusion: it’s not working.&lt;/p&gt;
 
@@ -59,6 +59,11 @@ https://user-images.githubusercontent.com/51350490/235798392-c0b212e6-0e5a-461b-
 
 &lt;p&gt;Here’s a video of this soldered circuit trail (also with 2 bulbs). This is the time lapse to the point the light turns off.&lt;/p&gt;
 
+&lt;iframe width=&quot;900&quot; height=&quot;500&quot; src=&quot;
+https://user-images.githubusercontent.com/51350490/236008609-9b2b09e4-b816-4a60-827e-11f9876f2aa1.mp4
+&quot;&gt;
+&lt;/iframe&gt;
+
 &lt;p&gt;Fabrication Stuff:
 Leia did some test for the plywood bending!&lt;/p&gt;
 
@@ -66,11 +71,24 @@ Leia did some test for the plywood bending!&lt;/p&gt;
 https://user-images.githubusercontent.com/51350490/235799788-68f65712-7cb4-412c-825e-9a75976743b5.mp4&quot;&gt;
 &lt;/iframe&gt;
 
+&lt;p&gt;This bend is the final design we decided to go with. Leia also sand and oiled the wooden frame.&lt;/p&gt;
+
 &lt;p&gt;After the wood parts are done. We designed the acrylic parts based on the wood frame since the bends are not perfectly 90 degree, and we want the acrylic to fully cover the plywood edge. We traced the frame on physical papers and traced the physical sketch in Illustrator for laser cutter.&lt;/p&gt;
 
 &lt;p&gt;Here’s the the general design. Later we added ear holes to make it easier to put the bulb in.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/acrylic.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.</summary></entry><entry><title type="html">final ideas</title><link href="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html" rel="alternate" type="text/html" title="final ideas" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html">&lt;p&gt;Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/acrylic.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the traced file, it is pretty visible that the bend is not a perfect bend once we traced it.&lt;/p&gt;
+
+&lt;p&gt;In the original plan, we wanted a shade/diffusor edge on the top. In the process, we noticed that the diffusor isn’t really diffusing as much as the wall is. The bulb is shining directly on the wall to shape the scallop. However, we still like the acrylic as a visual indicator of a lamp. Therefore, we went for the acrylic bending route.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/bend.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From there, we basically cut the acrylic piece. Noticed that the wood bend shrunk more over night, so that our acrylic pieces doesn’t really fit exactly. Assembled everything, including the circuit. Attached the protoboard on the lamp body. Sand down the edges of the acrylic.&lt;/p&gt;
+
+&lt;p&gt;Here’s a final photo of the lamp against the wall:
+&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/final.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.</summary></entry><entry><title type="html">final ideas</title><link href="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html" rel="alternate" type="text/html" title="final ideas" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html">&lt;p&gt;Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock&lt;/p&gt;
 
 &lt;p&gt;We are currently set on the third idea. We want the grandpa clock idea reserved for interactions of the light. It will be a timed task light for bed-time reading. Once the user lower one side of the string, the other side slowly get pulled down as a timer for the light.&lt;/p&gt;
 
