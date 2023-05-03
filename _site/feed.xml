@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/light/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/light/" rel="alternate" type="text/html" /><updated>2023-04-26T16:13:59-04:00</updated><id>http://localhost:4000/light/feed.xml</id><title type="html">Light &amp;amp; Interactivity</title><subtitle>This is Shuang&apos;s documentation for Tom Igoe&apos;s class in the same name.</subtitle><author><name>shuang</name></author><entry><title type="html">final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html" rel="alternate" type="text/html" title="final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/Schematics.png&quot; alt=&quot;This is the schematics.&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/light/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/light/" rel="alternate" type="text/html" /><updated>2023-05-03T14:17:46-04:00</updated><id>http://localhost:4000/light/feed.xml</id><title type="html">Light &amp;amp; Interactivity</title><subtitle>This is Shuang&apos;s documentation for Tom Igoe&apos;s class in the same name.</subtitle><author><name>shuang</name></author><entry><title type="html">final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html" rel="alternate" type="text/html" title="final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/Schematics.png&quot; alt=&quot;This is the schematics.&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I designed the PCB and cut. Short conclusion: it’s not working.&lt;/p&gt;
 
@@ -12,7 +12,65 @@
 
 &lt;p&gt;I don’t know what could be wrong in this case, but the 7805 keep getting too hot.&lt;/p&gt;
 
-&lt;p&gt;I think for now, I need to focus on the code and timing of the lamp before continue doing anything with the circuit.&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html"></summary></entry><entry><title type="html">final ideas</title><link href="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html" rel="alternate" type="text/html" title="final ideas" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html">&lt;p&gt;Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock&lt;/p&gt;
+&lt;p&gt;I think for now, I need to focus on the code and timing of the lamp before continue doing anything with the circuit.&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html"></summary></entry><entry><title type="html">more final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/more-final-progress.html" rel="alternate" type="text/html" title="more final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/more-final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/more-final-progress.html">&lt;p&gt;I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.&lt;/p&gt;
+
+&lt;p&gt;I found a way around that. The curve is only being used on the top lamp which dims in the course of 30 min. And because the curve is only being calculated based on time – which is a stable factor in comparison to a reading of a sensor – I could calculate the level on the fly.&lt;/p&gt;
+
+&lt;p&gt;Here’s the final code that’s being uploaded to the Attiny. You will see that the value are mapped on the course of 30 mins and the value of the analogWrite are being calculated every time the loop comes back to the spot.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int lightTop=0;
+int lightBot=1;
+
+void setup() {
+  // set  the transistor pin as output:
+  pinMode(lightBot, OUTPUT);
+  pinMode(lightTop, OUTPUT);
+  digitalWrite(lightBot, HIGH);
+}
+
+void loop() {
+  long currentTime = millis();
+  if(currentTime&amp;lt;1800001){
+  // Do something while waiting for 30 minutes
+    int index = map(currentTime, 0, 1800000, 255, 0);  // map the time to an index in the range of 0 to 255
+    float scalingFactor = (256 * log10(2)) / (log10(256));
+    analogWrite(lightTop, pow(2, index / scalingFactor) - 1);
+  }else{
+    analogWrite(lightTop, LOW);
+  }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here’s a video of this initial trail. This is a 10 min time lapse.&lt;/p&gt;
+
+&lt;iframe width=&quot;900&quot; height=&quot;500&quot; src=&quot;
+https://user-images.githubusercontent.com/51350490/235798392-c0b212e6-0e5a-461b-9d0a-508440b5f019.mp4&quot;&gt;
+&lt;/iframe&gt;
+
+&lt;p&gt;However, programming the attiny has not been smooth. I don’t know what could be causing this, but a couple of other people are also crossing into problems where the console will complain:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;avrdude: ser_recv(): programmer is not responding
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I ended up using Chumou’s computer to upload the code. And this problem has been blocking me too long so that I’ve decided to go with a portoboard instead of the cut PCB.&lt;/p&gt;
+
+&lt;p&gt;Another calculation that I didn’t plan but should have is the current consumption. Each bulb we bought drain 0.2 Amps, the power supply we used output 2000 milliamps. So luckily, we are way above the value.&lt;/p&gt;
+
+&lt;p&gt;Here’s a video of this soldered circuit trail (also with 2 bulbs). This is the time lapse to the point the light turns off.&lt;/p&gt;
+
+&lt;p&gt;Fabrication Stuff:
+Leia did some test for the plywood bending!&lt;/p&gt;
+
+&lt;iframe width=&quot;640&quot; height=&quot;1137.8&quot; src=&quot;
+https://user-images.githubusercontent.com/51350490/235799788-68f65712-7cb4-412c-825e-9a75976743b5.mp4&quot;&gt;
+&lt;/iframe&gt;
+
+&lt;p&gt;After the wood parts are done. We designed the acrylic parts based on the wood frame since the bends are not perfectly 90 degree, and we want the acrylic to fully cover the plywood edge. We traced the frame on physical papers and traced the physical sketch in Illustrator for laser cutter.&lt;/p&gt;
+
+&lt;p&gt;Here’s the the general design. Later we added ear holes to make it easier to put the bulb in.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/acrylic.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.</summary></entry><entry><title type="html">final ideas</title><link href="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html" rel="alternate" type="text/html" title="final ideas" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html">&lt;p&gt;Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock&lt;/p&gt;
 
 &lt;p&gt;We are currently set on the third idea. We want the grandpa clock idea reserved for interactions of the light. It will be a timed task light for bed-time reading. Once the user lower one side of the string, the other side slowly get pulled down as a timer for the light.&lt;/p&gt;
 
