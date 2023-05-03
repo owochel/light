@@ -1,18 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/light/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/light/" rel="alternate" type="text/html" /><updated>2023-05-03T14:31:21-04:00</updated><id>http://localhost:4000/light/feed.xml</id><title type="html">Light &amp;amp; Interactivity</title><subtitle>This is Shuang&apos;s documentation for Tom Igoe&apos;s class in the same name.</subtitle><author><name>shuang</name></author><entry><title type="html">final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html" rel="alternate" type="text/html" title="final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/Schematics.png&quot; alt=&quot;This is the schematics.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I designed the PCB and cut. Short conclusion: it’s not working.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/board.png&quot; alt=&quot;This is the board design in Fusion360.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I struggled a bit cutting the board out, but not horribly. Only one failed cut!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/cut.png&quot; alt=&quot;Here is the final cut.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I know the power jack need to be fixed to the out side of the enclosure, so I didn’t solder the the power source. I did the test by touching the ground and volt holding the wire.&lt;/p&gt;
-
-&lt;p&gt;I don’t know what could be wrong in this case, but the 7805 keep getting too hot.&lt;/p&gt;
-
-&lt;p&gt;I think for now, I need to focus on the code and timing of the lamp before continue doing anything with the circuit.&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html"></summary></entry><entry><title type="html">more final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/more-final-progress.html" rel="alternate" type="text/html" title="more final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/more-final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/more-final-progress.html">&lt;p&gt;I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/light/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/light/" rel="alternate" type="text/html" /><updated>2023-05-03T14:47:41-04:00</updated><id>http://localhost:4000/light/feed.xml</id><title type="html">Light &amp;amp; Interactivity</title><subtitle>This is Shuang&apos;s documentation for Tom Igoe&apos;s class in the same name.</subtitle><author><name>shuang</name></author><entry><title type="html">more final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/05/01/more-final-progress.html" rel="alternate" type="text/html" title="more final progress" /><published>2023-05-01T16:50:58-04:00</published><updated>2023-05-01T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/05/01/more-final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/05/01/more-final-progress.html">&lt;p&gt;I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.&lt;/p&gt;
 
 &lt;p&gt;I found a way around that. The curve is only being used on the top lamp which dims in the course of 30 min. And because the curve is only being calculated based on time – which is a stable factor in comparison to a reading of a sensor – I could calculate the level on the fly.&lt;/p&gt;
 
@@ -88,7 +74,44 @@ https://user-images.githubusercontent.com/51350490/235799788-68f65712-7cb4-412c-
 &lt;p&gt;From there, we basically cut the acrylic piece. Noticed that the wood bend shrunk more over night, so that our acrylic pieces doesn’t really fit exactly. Assembled everything, including the circuit. Attached the protoboard on the lamp body. Sand down the edges of the acrylic.&lt;/p&gt;
 
 &lt;p&gt;Here’s a final photo of the lamp against the wall:
-&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/final.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.</summary></entry><entry><title type="html">final ideas</title><link href="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html" rel="alternate" type="text/html" title="final ideas" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html">&lt;p&gt;Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock&lt;/p&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/final.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are too many things we learned in the process. Here’s compilation of them.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Taking measurement in the right space is very helpful and important&lt;/li&gt;
+  &lt;li&gt;Splitting tasks and delegating is very helpful&lt;/li&gt;
+  &lt;li&gt;With circuit design, PCB should have been the last step.&lt;/li&gt;
+  &lt;li&gt;Bending plywood is both easier than harder than we anticipated
+    &lt;ul&gt;
+      &lt;li&gt;The process is very simple, but doing the math is hard&lt;/li&gt;
+      &lt;li&gt;Doing the curved edge requires a better calculation of the radius&lt;/li&gt;
+      &lt;li&gt;The wood shrinks and shrinks unevenly after bending (could be from the glue).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Switch attachment and other parts attachment could have comes before designing the wood structure&lt;/li&gt;
+  &lt;li&gt;Designing for non-precise parts are way harder and still results in non-flush-fit
+    &lt;ul&gt;
+      &lt;li&gt;We did the measurements, then trace on paper, then trace in Illustrator. It worked, but it’s not a flush fit.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sides of acrylic matters when it comes to satin acrylic&lt;/li&gt;
+  &lt;li&gt;Next time doing acrylic bending, we should have a mold made for the form.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.</summary></entry><entry><title type="html">final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html" rel="alternate" type="text/html" title="final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/Schematics.png&quot; alt=&quot;This is the schematics.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I designed the PCB and cut. Short conclusion: it’s not working.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/board.png&quot; alt=&quot;This is the board design in Fusion360.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I struggled a bit cutting the board out, but not horribly. Only one failed cut!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/cut.png&quot; alt=&quot;Here is the final cut.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I know the power jack need to be fixed to the out side of the enclosure, so I didn’t solder the the power source. I did the test by touching the ground and volt holding the wire.&lt;/p&gt;
+
+&lt;p&gt;I don’t know what could be wrong in this case, but the 7805 keep getting too hot.&lt;/p&gt;
+
+&lt;p&gt;I think for now, I need to focus on the code and timing of the lamp before continue doing anything with the circuit.&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html"></summary></entry><entry><title type="html">final ideas</title><link href="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html" rel="alternate" type="text/html" title="final ideas" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html">&lt;p&gt;Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock&lt;/p&gt;
 
 &lt;p&gt;We are currently set on the third idea. We want the grandpa clock idea reserved for interactions of the light. It will be a timed task light for bed-time reading. Once the user lower one side of the string, the other side slowly get pulled down as a timer for the light.&lt;/p&gt;
 

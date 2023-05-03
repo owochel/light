@@ -2,7 +2,7 @@
 label: assignments
 layout: post
 title: "more final progress"
-date: 2023-04-20 15:50:58 -0500
+date: 2023-05-01 15:50:58 -0500
 categories: jekyll update
 ---
 
@@ -88,3 +88,18 @@ From there, we basically cut the acrylic piece. Noticed that the wood bend shrun
 
 Here's a final photo of the lamp against the wall:
 ![The screenshot of the Illustrator file.]({{ site.asseturl }}/\_final/final.png)
+
+There are too many things we learned in the process. Here's compilation of them.
+
+- Taking measurement in the right space is very helpful and important
+- Splitting tasks and delegating is very helpful
+- With circuit design, PCB should have been the last step.
+- Bending plywood is both easier than harder than we anticipated
+  - The process is very simple, but doing the math is hard
+  - Doing the curved edge requires a better calculation of the radius
+  - The wood shrinks and shrinks unevenly after bending (could be from the glue).
+- Switch attachment and other parts attachment could have comes before designing the wood structure
+- Designing for non-precise parts are way harder and still results in non-flush-fit
+  - We did the measurements, then trace on paper, then trace in Illustrator. It worked, but it's not a flush fit.
+- Sides of acrylic matters when it comes to satin acrylic
+- Next time doing acrylic bending, we should have a mold made for the form.
