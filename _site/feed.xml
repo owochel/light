@@ -1,172 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/light/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/light/" rel="alternate" type="text/html" /><updated>2023-05-03T14:47:41-04:00</updated><id>http://localhost:4000/light/feed.xml</id><title type="html">Light &amp;amp; Interactivity</title><subtitle>This is Shuang&apos;s documentation for Tom Igoe&apos;s class in the same name.</subtitle><author><name>shuang</name></author><entry><title type="html">more final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/05/01/more-final-progress.html" rel="alternate" type="text/html" title="more final progress" /><published>2023-05-01T16:50:58-04:00</published><updated>2023-05-01T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/05/01/more-final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/05/01/more-final-progress.html">&lt;p&gt;I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/dump/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/dump/" rel="alternate" type="text/html" /><updated>2023-09-05T17:47:21-04:00</updated><id>http://localhost:4000/dump/feed.xml</id><title type="html">shuang’s dump</title><subtitle>dump is usually referring to a site for depositing garbage. i don&apos;t think things here are garbage, but maybe they are. maybe this dump is different.</subtitle><entry><title type="html">cloud lamp</title><link href="http://localhost:4000/dump/jekyll/update/2023/04/05/cloud-lamp.html" rel="alternate" type="text/html" title="cloud lamp" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/dump/jekyll/update/2023/04/05/cloud-lamp</id><content type="html" xml:base="http://localhost:4000/dump/jekyll/update/2023/04/05/cloud-lamp.html">&lt;p&gt;a reactive lamp that turns on when you are using your phone.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">a reactive lamp that turns on when you are using your phone.</summary></entry><entry><title type="html">tablecloth</title><link href="http://localhost:4000/dump/jekyll/update/2022/11/21/tablecloth.html" rel="alternate" type="text/html" title="tablecloth" /><published>2022-11-21T16:38:58-05:00</published><updated>2022-11-21T16:38:58-05:00</updated><id>http://localhost:4000/dump/jekyll/update/2022/11/21/tablecloth</id><content type="html" xml:base="http://localhost:4000/dump/jekyll/update/2022/11/21/tablecloth.html">&lt;p&gt;a 4 people dining experience.&lt;/p&gt;
 
-&lt;p&gt;I found a way around that. The curve is only being used on the top lamp which dims in the course of 30 min. And because the curve is only being calculated based on time – which is a stable factor in comparison to a reading of a sensor – I could calculate the level on the fly.&lt;/p&gt;
+&lt;!-- In response to the note got from the previous class, I re-did the design with cleaner soldering and circuit. The soldering points are further apart. This version of the circuit uses A0 as the input and 5 as PWM output.
 
-&lt;p&gt;Here’s the final code that’s being uploaded to the Attiny. You will see that the value are mapped on the course of 30 mins and the value of the analogWrite are being calculated every time the loop comes back to the spot.&lt;/p&gt;
+I was so proud of the board last week that turned out to be a failure. This version works fine, but I&apos;m not so happy with the layout. The MOSFET and the potentiometer are too close to each other.
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int lightTop=0;
-int lightBot=1;
+![This the picture of the new board.](https://raw.githubusercontent.com/owochel/dump/main/\_12v/new.png) --&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">a 4 people dining experience.</summary></entry><entry><title type="html">hen</title><link href="http://localhost:4000/dump/jekyll/update/2022/10/01/hen.html" rel="alternate" type="text/html" title="hen" /><published>2022-10-01T17:32:58-04:00</published><updated>2022-10-01T17:32:58-04:00</updated><id>http://localhost:4000/dump/jekyll/update/2022/10/01/hen</id><content type="html" xml:base="http://localhost:4000/dump/jekyll/update/2022/10/01/hen.html">&lt;p&gt;a remote-controlled egg boiler&lt;br /&gt;
+to turn on hen and boil your egg, you must hatch the controller like a hen&lt;/p&gt;
 
-void setup() {
-  // set  the transistor pin as output:
-  pinMode(lightBot, OUTPUT);
-  pinMode(lightTop, OUTPUT);
-  digitalWrite(lightBot, HIGH);
-}
+&lt;!--
+Create a fading LED attached to a micro-controller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source.
 
-void loop() {
-  long currentTime = millis();
-  if(currentTime&amp;lt;1800001){
-  // Do something while waiting for 30 minutes
-    int index = map(currentTime, 0, 1800000, 255, 0);  // map the time to an index in the range of 0 to 255
-    float scalingFactor = (256 * log10(2)) / (log10(256));
-    analogWrite(lightTop, pow(2, index / scalingFactor) - 1);
-  }else{
-    analogWrite(lightTop, LOW);
-  }
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here’s a video of this initial trail. This is a 10 min time lapse.&lt;/p&gt;
-
-&lt;iframe width=&quot;900&quot; height=&quot;500&quot; src=&quot;
-https://user-images.githubusercontent.com/51350490/235798392-c0b212e6-0e5a-461b-9d0a-508440b5f019.mp4&quot;&gt;
-&lt;/iframe&gt;
-
-&lt;p&gt;However, programming the attiny has not been smooth. I don’t know what could be causing this, but a couple of other people are also crossing into problems where the console will complain:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;avrdude: ser_recv(): programmer is not responding
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I ended up using Chumou’s computer to upload the code. And this problem has been blocking me too long so that I’ve decided to go with a portoboard instead of the cut PCB.&lt;/p&gt;
-
-&lt;p&gt;Another calculation that I didn’t plan but should have is the current consumption. Each bulb we bought drain 0.2 Amps, the power supply we used output 2000 milliamps. So luckily, we are way above the value.&lt;/p&gt;
-
-&lt;p&gt;Here’s a video of this soldered circuit trail (also with 2 bulbs). This is the time lapse to the point the light turns off.&lt;/p&gt;
-
-&lt;iframe width=&quot;900&quot; height=&quot;500&quot; src=&quot;
-https://user-images.githubusercontent.com/51350490/236008609-9b2b09e4-b816-4a60-827e-11f9876f2aa1.mp4
-&quot;&gt;
-&lt;/iframe&gt;
-
-&lt;p&gt;Fabrication Stuff:
-Leia did some test for the plywood bending!&lt;/p&gt;
-
-&lt;iframe width=&quot;640&quot; height=&quot;1137.8&quot; src=&quot;
-https://user-images.githubusercontent.com/51350490/235799788-68f65712-7cb4-412c-825e-9a75976743b5.mp4&quot;&gt;
-&lt;/iframe&gt;
-
-&lt;p&gt;This bend is the final design we decided to go with. Leia also sand and oiled the wooden frame.&lt;/p&gt;
-
-&lt;p&gt;After the wood parts are done. We designed the acrylic parts based on the wood frame since the bends are not perfectly 90 degree, and we want the acrylic to fully cover the plywood edge. We traced the frame on physical papers and traced the physical sketch in Illustrator for laser cutter.&lt;/p&gt;
-
-&lt;p&gt;Here’s the the general design. Later we added ear holes to make it easier to put the bulb in.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/acrylic.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;On the traced file, it is pretty visible that the bend is not a perfect bend once we traced it.&lt;/p&gt;
-
-&lt;p&gt;In the original plan, we wanted a shade/diffusor edge on the top. In the process, we noticed that the diffusor isn’t really diffusing as much as the wall is. The bulb is shining directly on the wall to shape the scallop. However, we still like the acrylic as a visual indicator of a lamp. Therefore, we went for the acrylic bending route.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/bend.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;From there, we basically cut the acrylic piece. Noticed that the wood bend shrunk more over night, so that our acrylic pieces doesn’t really fit exactly. Assembled everything, including the circuit. Attached the protoboard on the lamp body. Sand down the edges of the acrylic.&lt;/p&gt;
-
-&lt;p&gt;Here’s a final photo of the lamp against the wall:
-&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/final.png&quot; alt=&quot;The screenshot of the Illustrator file.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There are too many things we learned in the process. Here’s compilation of them.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Taking measurement in the right space is very helpful and important&lt;/li&gt;
-  &lt;li&gt;Splitting tasks and delegating is very helpful&lt;/li&gt;
-  &lt;li&gt;With circuit design, PCB should have been the last step.&lt;/li&gt;
-  &lt;li&gt;Bending plywood is both easier than harder than we anticipated
-    &lt;ul&gt;
-      &lt;li&gt;The process is very simple, but doing the math is hard&lt;/li&gt;
-      &lt;li&gt;Doing the curved edge requires a better calculation of the radius&lt;/li&gt;
-      &lt;li&gt;The wood shrinks and shrinks unevenly after bending (could be from the glue).&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Switch attachment and other parts attachment could have comes before designing the wood structure&lt;/li&gt;
-  &lt;li&gt;Designing for non-precise parts are way harder and still results in non-flush-fit
-    &lt;ul&gt;
-      &lt;li&gt;We did the measurements, then trace on paper, then trace in Illustrator. It worked, but it’s not a flush fit.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Sides of acrylic matters when it comes to satin acrylic&lt;/li&gt;
-  &lt;li&gt;Next time doing acrylic bending, we should have a mold made for the form.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">I cross into problems with Attiny85 memory limit. Even if I use a smaller resolution like 8 resulting in a 25-int-long level table, the Attiny85 is still be too small to store all the values.</summary></entry><entry><title type="html">final progress</title><link href="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html" rel="alternate" type="text/html" title="final progress" /><published>2023-04-20T16:50:58-04:00</published><updated>2023-04-20T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/20/final-progress</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/20/final-progress.html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/Schematics.png&quot; alt=&quot;This is the schematics.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I designed the PCB and cut. Short conclusion: it’s not working.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/board.png&quot; alt=&quot;This is the board design in Fusion360.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I struggled a bit cutting the board out, but not horribly. Only one failed cut!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/cut.png&quot; alt=&quot;Here is the final cut.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I know the power jack need to be fixed to the out side of the enclosure, so I didn’t solder the the power source. I did the test by touching the ground and volt holding the wire.&lt;/p&gt;
-
-&lt;p&gt;I don’t know what could be wrong in this case, but the 7805 keep getting too hot.&lt;/p&gt;
-
-&lt;p&gt;I think for now, I need to focus on the code and timing of the lamp before continue doing anything with the circuit.&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html"></summary></entry><entry><title type="html">final ideas</title><link href="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html" rel="alternate" type="text/html" title="final ideas" /><published>2023-04-05T16:50:58-04:00</published><updated>2023-04-05T16:50:58-04:00</updated><id>http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/04/05/final-ideas.html">&lt;p&gt;Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock&lt;/p&gt;
-
-&lt;p&gt;We are currently set on the third idea. We want the grandpa clock idea reserved for interactions of the light. It will be a timed task light for bed-time reading. Once the user lower one side of the string, the other side slowly get pulled down as a timer for the light.&lt;/p&gt;
-
-&lt;p&gt;For the form, we want a two-part solution. We want the top to be a environment light and bottom to be a reading light.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_final/sketch.png&quot; alt=&quot;This is a sketch Leia drew.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I purchased &lt;a href=&quot;https://www.amazon.com/dp/B0BS3KFPD3?psc=1&amp;amp;ref=ppx_yo2ov_dt_b_product_details&quot;&gt;two bulbs that can be slam fixed easily on Amazon&lt;/a&gt;. We were looking for a warm-temperature bulb. Like I didn’t take the class at all, I made the mistake of thinking that the higher the temperature value(5000K) is, the warm it would be. Turns out, the one we are looking for should be 3000K. We need to test the bulbs in Leia’s home since this is a lamp designed for her space.&lt;/p&gt;
-
-&lt;p&gt;I will be starting to make the circuit soon.&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">Leia and I had a list of things that we want to make. The shortlisted candidates are: - Purse Light that can be decorative when not used, but the light usually helps you find your stuff in the bag - Magnetic counter light that brighten your sink in the kitchen, that can be attached to salt shaker - A reading light above your bed that has a control of a pendulum grandpa clock</summary></entry><entry><title type="html">12v redo and paper shades</title><link href="http://localhost:4000/light/jekyll/update/2023/02/21/12v-redo-and-paper-shades.html" rel="alternate" type="text/html" title="12v redo and paper shades" /><published>2023-02-21T16:38:58-05:00</published><updated>2023-02-21T16:38:58-05:00</updated><id>http://localhost:4000/light/jekyll/update/2023/02/21/12v-redo-and-paper-shades</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/02/21/12v-redo-and-paper-shades.html">&lt;p&gt;In response to the note got from the previous class, I re-did the design with cleaner soldering and circuit. The soldering points are further apart. This version of the circuit uses A0 as the input and 5 as PWM output.&lt;/p&gt;
-
-&lt;p&gt;I was so proud of the board last week that turned out to be a failure. This version works fine, but I’m not so happy with the layout. The MOSFET and the potentiometer are too close to each other.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_12v/new.png&quot; alt=&quot;This the picture of the new board.&quot; /&gt;&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">In response to the note got from the previous class, I re-did the design with cleaner soldering and circuit. The soldering points are further apart. This version of the circuit uses A0 as the input and 5 as PWM output.</summary></entry><entry><title type="html">12v controller</title><link href="http://localhost:4000/light/jekyll/update/2023/02/15/12v-controller.html" rel="alternate" type="text/html" title="12v controller" /><published>2023-02-15T16:32:58-05:00</published><updated>2023-02-15T16:32:58-05:00</updated><id>http://localhost:4000/light/jekyll/update/2023/02/15/12v-controller</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/02/15/12v-controller.html">&lt;p&gt;We are making a 12v controller that allows you to manipulate 12v bulbs.
-I’m using the &lt;a href=&quot;https://itp.nyu.edu/physcomp/labs/motors-and-transistors/using-a-transistor-to-control-high-current-loads-with-an-arduino/&quot;&gt;itp labs for FQP30N06L MOSFET&lt;/a&gt; for the circuit.&lt;/p&gt;
-
-&lt;p&gt;The potentiometer readings is never stable. While it is not noticeable when the bulb is bright, I found it flickers when the pot is tunned down close to off. I added a tiny resistor at the output to reduce the voltage, so it won’t turn on the bulb when it is close to zero.&lt;/p&gt;
-
-&lt;p&gt;The code can be found &lt;a href=&quot;https://github.com/owochel/light/tree/main\_12v/12v/12v.ino&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For the bulb input, I used a audio jack port I found from the junk shelf. The port has two plugs that is easy to attach/remove. To reduce the chances of damage and shorts happening behind the soldering points, I also added a backing and four feet for the board.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_12v/side.jpeg&quot; alt=&quot;This the picture of the board.&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;See video for demo&lt;/p&gt;
-
-&lt;iframe width=&quot;360&quot; height=&quot;640&quot; src=&quot;https://user-images.githubusercontent.com/51350490/220451484-515fa4e7-223d-464e-8f79-75b00d273631.mp4&quot;&gt;
-&lt;/iframe&gt;
-
-&lt;p&gt;NOTE from after class:
-The resistor ended up becoming a huge problem. It altered the current went through the bulb that results in malfunctions for all the other bulbs other than the corn cob. Lesson learned: do not alter the circuit if you don’t know what you are doing.&lt;/p&gt;
-
-&lt;p&gt;Also, Tom told me that the GND and Volt pins on the MOSFET are too close together. Even if the soldering points are not touching, the current running through the points might short the circuit.&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">We are making a 12v controller that allows you to manipulate 12v bulbs. I’m using the itp labs for FQP30N06L MOSFET for the circuit.</summary></entry><entry><title type="html">candle</title><link href="http://localhost:4000/light/jekyll/update/2023/02/08/candle.html" rel="alternate" type="text/html" title="candle" /><published>2023-02-08T16:32:58-05:00</published><updated>2023-02-08T16:32:58-05:00</updated><id>http://localhost:4000/light/jekyll/update/2023/02/08/candle</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/02/08/candle.html">&lt;p&gt;This project asks us to uses an arduino and &lt;a href=&quot;https://www.adafruit.com/product/2226&quot;&gt;NeoPixel jewel&lt;/a&gt; to create a candle.
-I chose to use a Nano 33 BLE and a photocell to accomplish a torch that “borrows” light.&lt;/p&gt;
-
-&lt;p&gt;The borrowing parts were straightforward enough. I am able to program the turning on process pretty fast.
-I spend some time trying to think of ways I can turn the torch off because the photocell won’t be able to read a difference in light changes when the NeoPixel is on.
-As Ijon suggested, there are lots of sensors in BLE that could come in handy. I ended up using the accelerometer in the BLE to program a state-change.&lt;/p&gt;
-
-&lt;p&gt;The code can be found &lt;a href=&quot;https://github.com/owochel/light/tree/main\_candle/candle/candle.ino&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The limitation of this project is that it requires some tuning in every environment. The changes in environmental lights and/or lending light sources requires a different threshold value in the code.&lt;/p&gt;
-
-&lt;p&gt;See the video below for demo:&lt;/p&gt;
-
-&lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://user-images.githubusercontent.com/51350490/220449124-2332311c-d367-40be-866d-badaaa0c6117.mp4&quot;&gt;
-&lt;/iframe&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">This project asks us to uses an arduino and NeoPixel jewel to create a candle. I chose to use a Nano 33 BLE and a photocell to accomplish a torch that “borrows” light.</summary></entry><entry><title type="html">interruptible LED fade</title><link href="http://localhost:4000/light/jekyll/update/2023/02/01/interruptible-LED-fade.html" rel="alternate" type="text/html" title="interruptible LED fade" /><published>2023-02-01T16:32:58-05:00</published><updated>2023-02-01T16:32:58-05:00</updated><id>http://localhost:4000/light/jekyll/update/2023/02/01/interruptible-LED-fade</id><content type="html" xml:base="http://localhost:4000/light/jekyll/update/2023/02/01/interruptible-LED-fade.html">&lt;p&gt;Create a fading LED attached to a micro-controller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source.&lt;/p&gt;
-
-&lt;iframe width=&quot;360&quot; height=&quot;640&quot; src=&quot;
+&lt;iframe width=&quot;360&quot; height=&quot;640&quot;
+  src=&quot;
 https://user-images.githubusercontent.com/51350490/220447883-8ba788b7-cb66-48ec-864e-6b2e3052b02d.mp4&quot;&gt;
 &lt;/iframe&gt;
 
-&lt;p&gt;In this assignment, I used both the simple linear curve and the exponential curve for the fade. The LED on the top of the video is the exponential curve fade and the bottom is the simple linear curve fade. As the video shows, the two types of fades are different.
-The button on the top (brown) gradually turns the lights on, and the bottom turns the lights off. When both buttons are pressed at the same time, the bulbs show a loop where the two bulbs flash with the fade on to off and back to on.&lt;/p&gt;
+In this assignment, I used both the simple linear curve and the exponential curve for the fade. The LED on the top of the video is the exponential curve fade and the bottom is the simple linear curve fade. As the video shows, the two types of fades are different.
+The button on the top (brown) gradually turns the lights on, and the bottom turns the lights off. When both buttons are pressed at the same time, the bulbs show a loop where the two bulbs flash with the fade on to off and back to on.
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/owochel/light/tree/main\_PWM/fade/fade.ino&quot;&gt;The code for the circuit view on github.&lt;/a&gt;&lt;/p&gt;
+[The code for the circuit view on github.](https://github.com/owochel/dump/tree/main\_PWM/fade/fade.ino )
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/light/main/\_PWM/circuit.jpg&quot; alt=&quot;This the picture of the circuit.&quot; /&gt;&lt;/p&gt;</content><author><name>shuang</name></author><category term="jekyll" /><category term="update" /><summary type="html">Create a fading LED attached to a micro-controller. Your LED should be interruptible by either a pushbutton, analog input, or serial input. Your fade speed and fade curve are yours to determine. Don’t use programmable LEDs for this, keep it simple and use a single-channel source. Either fade an LED directly from your micro-controller, or use a DC source.</summary></entry></feed>
+![This the picture of the circuit.](https://raw.githubusercontent.com/owochel/dump/main/\_PWM/circuit.jpg) --&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">a remote-controlled egg boiler to turn on hen and boil your egg, you must hatch the controller like a hen</summary></entry><entry><title type="html">annoying phone addon</title><link href="http://localhost:4000/dump/jekyll/update/2022/09/08/annoying-phone-addon.html" rel="alternate" type="text/html" title="annoying phone addon" /><published>2022-09-08T17:32:58-04:00</published><updated>2022-09-08T17:32:58-04:00</updated><id>http://localhost:4000/dump/jekyll/update/2022/09/08/annoying-phone-addon</id><content type="html" xml:base="http://localhost:4000/dump/jekyll/update/2022/09/08/annoying-phone-addon.html">&lt;p&gt;a phone addon that turns off the screen whenever the screen is on.&lt;/p&gt;
+
+&lt;!-- This project asks us to uses an arduino and [NeoPixel jewel](https://www.adafruit.com/product/2226) to create a candle.
+I chose to use a Nano 33 BLE and a photocell to accomplish a torch that &quot;borrows&quot; light.
+
+The borrowing parts were straightforward enough. I am able to program the turning on process pretty fast.
+I spend some time trying to think of ways I can turn the torch off because the photocell won&apos;t be able to read a difference in light changes when the NeoPixel is on.
+As Ijon suggested, there are lots of sensors in BLE that could come in handy. I ended up using the accelerometer in the BLE to program a state-change.
+
+The code can be found [here](https://github.com/owochel/dump/tree/main\_candle/candle/candle.ino ).
+
+The limitation of this project is that it requires some tuning in every environment. The changes in environmental lights and/or lending light sources requires a different threshold value in the code.
+
+See the video below for demo:
+
+&lt;iframe width=&quot;640&quot; height=&quot;360&quot;
+  src=&quot;https://user-images.githubusercontent.com/51350490/220449124-2332311c-d367-40be-866d-badaaa0c6117.mp4&quot;&gt;
+&lt;/iframe&gt; --&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">a phone addon that turns off the screen whenever the screen is on.</summary></entry><entry><title type="html">tic tac toe thing</title><link href="http://localhost:4000/dump/jekyll/update/2022/05/15/tic-tac-toe-thing.html" rel="alternate" type="text/html" title="tic tac toe thing" /><published>2022-05-15T17:32:58-04:00</published><updated>2022-05-15T17:32:58-04:00</updated><id>http://localhost:4000/dump/jekyll/update/2022/05/15/tic-tac-toe-thing</id><content type="html" xml:base="http://localhost:4000/dump/jekyll/update/2022/05/15/tic-tac-toe-thing.html">&lt;p&gt;a tactical tic tac toe game.&lt;/p&gt;
+
+&lt;!--
+We are making a 12v controller that allows you to manipulate 12v bulbs.
+I&apos;m using the [itp labs for FQP30N06L MOSFET](https://itp.nyu.edu/physcomp/labs/motors-and-transistors/using-a-transistor-to-control-high-current-loads-with-an-arduino/) for the circuit.
+
+The potentiometer readings is never stable. While it is not noticeable when the bulb is bright, I found it flickers when the pot is tunned down close to off. I added a tiny resistor at the output to reduce the voltage, so it won&apos;t turn on the bulb when it is close to zero.
+
+The code can be found [here](https://github.com/owochel/dump/tree/main\_12v/12v/12v.ino ).
+
+For the bulb input, I used a audio jack port I found from the junk shelf. The port has two plugs that is easy to attach/remove. To reduce the chances of damage and shorts happening behind the soldering points, I also added a backing and four feet for the board.
+
+![This the picture of the board.](https://raw.githubusercontent.com/owochel/dump/main/\_12v/side.jpeg)
+
+See video for demo
+
+&lt;iframe width=&quot;360&quot; height=&quot;640&quot;
+  src=&quot;https://user-images.githubusercontent.com/51350490/220451484-515fa4e7-223d-464e-8f79-75b00d273631.mp4&quot;&gt;
+&lt;/iframe&gt;
+
+NOTE from after class:
+The resistor ended up becoming a huge problem. It altered the current went through the bulb that results in malfunctions for all the other bulbs other than the corn cob. Lesson learned: do not alter the circuit if you don&apos;t know what you are doing.
+
+Also, Tom told me that the GND and Volt pins on the MOSFET are too close together. Even if the soldering points are not touching, the current running through the points might short the circuit. --&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">a tactical tic tac toe game.</summary></entry><entry><title type="html">Quarantine, The Game</title><link href="http://localhost:4000/dump/jekyll/update/2022/01/20/quarantine.html" rel="alternate" type="text/html" title="Quarantine, The Game" /><published>2022-01-20T15:50:58-05:00</published><updated>2022-01-20T15:50:58-05:00</updated><id>http://localhost:4000/dump/jekyll/update/2022/01/20/quarantine</id><content type="html" xml:base="http://localhost:4000/dump/jekyll/update/2022/01/20/quarantine.html">&lt;p&gt;a survival game where you are quarantined in a room for 14 days.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://owochel.github.io/quarantine/&quot;&gt;link to game&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/owochel/dump/main/\_post/quarantine./gameScreen.jpg&quot; alt=&quot;Begining screen to the game&quot; /&gt;&lt;/p&gt;
+
+&lt;!--
+![This is the schematics.](https://raw.githubusercontent.com/owochel/dump/main/\_final/Schematics.png)
+
+I designed the PCB and cut. Short conclusion: it&apos;s not working.
+
+![This is the board design in Fusion360.](https://raw.githubusercontent.com/owochel/dump/main/\_final/board.png)
+
+I struggled a bit cutting the board out, but not horribly. Only one failed cut!
+
+![Here is the final cut.](https://raw.githubusercontent.com/owochel/dump/main/\_final/cut.png)
+
+I know the power jack need to be fixed to the out side of the enclosure, so I didn&apos;t solder the the power source. I did the test by touching the ground and volt holding the wire.
+
+I don&apos;t know what could be wrong in this case, but the 7805 keep getting too hot.
+
+I think for now, I need to focus on the code and timing of the lamp before continue doing anything with the circuit. --&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">a survival game where you are quarantined in a room for 14 days.</summary></entry></feed>

@@ -1,20 +1,28 @@
-title: Light & Interactivity
-author: shuang
+title: shuang's dump
+# author: shuang
 email: zoecsh@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This is Shuang's documentation for Tom Igoe's class in the same name.
+  dump is usually referring to a site for depositing garbage. i don't think things here are garbage, but maybe they are. maybe this dump is different.
 
-baseurl: "/light" # the subpath of your site, e.g. /blog
-observations: "/light/weekly"
-codeurl: "https://github.com/owochel/light/tree/main"
-asseturl: "https://raw.githubusercontent.com/owochel/light/main"
+baseurl: "/dump" # the subpath of your site, e.g. /blog
+codeurl: "https://github.com/owochel/dump/tree/main"
+asseturl: "https://raw.githubusercontent.com/owochel/dump/main"
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: owochel
 
 # Build settings
-theme: minima
+# theme: minima
+# theme: jekyll-theme-slate
+remote_theme: b2a3e8/jekyll-theme-console
+# remote_theme: b2a3e8/jekyll-theme-console
 plugins:
   - jekyll-feed
+
+header_pages:
+  - index.md
+  - about.md
+
+markdown: kramdown
 
 collections:
   weekly:
